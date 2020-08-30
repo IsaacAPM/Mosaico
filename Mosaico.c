@@ -17,6 +17,15 @@ void drawQUAD(float x1, float y1, float x2, float y2, float x3, float y3, float 
 	glFlush();
 }
 
+void drawTRIANGLE(float x1, float y1, float x2, float y2, float x3, float y3){
+	glBegin(GL_TRIANGLES);
+	glVertex2f(x1,y1);
+	glVertex2f(x2,y2);
+	glVertex2f(x3,y3);
+	glEnd();
+	glFlush();
+}
+
 void marcarContorno(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4){
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(x1,y1);
@@ -102,6 +111,65 @@ void pintarCuadrante(int s1,int s2,int s3,int s4,int s5,int s6,int s7,int s8){
 	h = 0.77*s8;
 	drawQUAD(a,b,c,d,e,f,g,h);
 	marcarContorno(a,b,c,d,e,f,g,h);
+
+	//triangulo en las esquinas
+	glColor3f(0.92, 0.65, 0.082);//naranja
+	a = 0.76*s1;
+	b = 0.0*s2;
+	c = 0.82*s3;
+	d = 0.0*s4;
+	e = 1.0*s5;
+	f = 0.18*s6;
+	g = 1.0*s7;
+	h = 0.24*s8;
+	drawQUAD(a,b,c,d,e,f,g,h);
+	drawQUAD(b,a,d,c,f,e,h,e);
+	glColor3f(0.96, 0.84, 0.13);//amarillo
+	a = 0.82*s1;
+	b = 0.0*s2;
+	c = 0.88*s3;
+	d = 0.0*s4;
+	e = 1.0*s5;
+	f = 0.12*s6;
+	g = 1.0*s7;
+	h = 0.18*s8;
+	drawQUAD(a,b,c,d,e,f,g,h);
+	drawQUAD(b,a,d,c,f,e,h,e);
+	glColor3f(0.02, 0.02, 0.63);//azul
+	a = 0.92*s1;
+	b = 0.0*s2;
+	c = 1.0*s3;
+	d = 0.0*s4;
+	e = 1.0*s5;
+	f = 0.08*s6;
+	drawTRIANGLE(a,b,c,d,e,f);
+	drawTRIANGLE(b,a,d,c,f,e);
+	a = 0.0*s1;
+	b = 0.06*s2;
+	c = 0.06*s3;
+	d = 0.06*s4;
+	e = 0.1*s5; 
+	f = 0.2*s6;
+	g = 0.0*s7;
+	h = 0.2*s8;
+	drawQUAD(a,b,c,d,e,f,g,h);
+	drawQUAD(b,a,d,c,f,e,h,g);
+	a = 0.0*s1;
+	b = 0.2*s2;
+	c = 0.06*s3;
+	d = 0.2*s4;
+	e = 0.0*s5; 
+	f = 0.34*s6;
+	drawTRIANGLE(a,b,c,d,e,f);
+	drawTRIANGLE(b,a,d,c,f,e);
+	a = 0.06*s1;
+	b = 0.2*s2;
+	c = 0.1*s3;
+	d = 0.2*s4;
+	e = 0.08*s5; 
+	f = 0.24*s6;
+	drawTRIANGLE(a,b,c,d,e,f);
+	drawTRIANGLE(b,a,d,c,f,e);
 }
 
 
@@ -110,6 +178,8 @@ void display(void) {
 	pintarCuadrante(-1,1,-1,1,-1,1,-1,1);
 	pintarCuadrante(-1,-1,-1,-1,-1,-1,-1,-1);
 	pintarCuadrante(1,-1,1,-1,1,-1,1,-1);
+	glColor3f(0.96, 0.84, 0.13);//amarillo
+	drawQUAD(0.0,0.06,0.06,0.0,0.0,-0.06,-0.06,0.0);
 }
 
 void teclado(unsigned char key, int xmouse, int ymouse) {
