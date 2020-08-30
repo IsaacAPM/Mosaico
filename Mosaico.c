@@ -28,7 +28,24 @@ void marcarContorno(float x1, float y1, float x2, float y2){
 }
 
 void dibujaCuadrante(int sx, int sy){
-	
+	glColor3f(0.96, 0.84, 0.13);//amarillo
+	drawQUAD(sx*0.4,sy*0.0,sx*0.55,sy*0.0);
+	drawQUAD(sx*1.0,sy*0.45,sx*1.0,0.6);
+	glColor3f(0.92, 0.65, 0.082);//naranja
+	drawQUAD(sx*0.55,sy*0.0,sx*0.7,sy*0.0);
+	drawQUAD(sx*1.0,sy*0.3,sx*1.0,sy*0.45);
+	glColor3f(0.02, 0.02, 0.63);//azul
+	drawQUAD(sx*0.7,sy*0.0,sx*0.77,sy*0.07);
+	drawQUAD(sx*0.93,sy*0.23,sx*1.0,sy*0.3);
+	glColor3f(0.0,0.0,0.0);//negro
+	drawQUAD(sx*0.77,sy*0.07,sx*0.93,sy*0.23);
+	glLineWidth(1);
+	marcarContorno(sx*0.4,sy*0.0,sx*0.55,sy*0.0);
+	marcarContorno(sx*0.4,sy*0.0,sx*0.55,sy*0.0);
+	marcarContorno(sx*0.55,sy*0.0,sx*0.7,sy*0.0);
+	marcarContorno(sx*1.0,sy*0.3,sx*1.0,sy*0.45);
+	marcarContorno(sx*0.7,sy*0.0,sx*0.77,sy*0.07);
+	marcarContorno(sx*0.93,sy*0.23,sx*1.0,sy*0.3);
 }
 
 void display(void) {
@@ -50,6 +67,7 @@ void display(void) {
 	marcarContorno(0.93,0.23,1.0,0.3);
 	marcarContorno(1.0,0.3,1.0,0.45);
 	marcarContorno(1.0,0.45,1.0,0.6);
+	//dibujaCuadrante(-1,1);
 }
 
 void teclado(unsigned char key, int xmouse, int ymouse) {
