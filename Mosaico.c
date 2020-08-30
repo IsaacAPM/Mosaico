@@ -7,6 +7,7 @@ void init() {
 	glShadeModel(GL_SMOOTH);
 }
 
+//Funcion que dibuja un cuadrado, resive como parametro las coordenadas de los 4 vertices
 void drawQUAD(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4){
 	glBegin(GL_QUADS);
 	glVertex2f(x1,y1);
@@ -17,6 +18,7 @@ void drawQUAD(float x1, float y1, float x2, float y2, float x3, float y3, float 
 	glFlush();
 }
 
+//Funcion que dibuja un triángulo, resive como parametro las coordenadas de los 3 vertices
 void drawTRIANGLE(float x1, float y1, float x2, float y2, float x3, float y3){
 	glBegin(GL_TRIANGLES);
 	glVertex2f(x1,y1);
@@ -26,6 +28,7 @@ void drawTRIANGLE(float x1, float y1, float x2, float y2, float x3, float y3){
 	glFlush();
 }
 
+//Función  que marca el contorno de una figura de 4 lados
 void marcarContorno(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4){
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(x1,y1);
@@ -36,6 +39,13 @@ void marcarContorno(float x1, float y1, float x2, float y2, float x3, float y3, 
 	glFlush();
 }
 
+//Esta función pinta uno de los cuadrantes de la figura, resive como entrada los 
+//signos representativos del cuadrante:
+//11111111 1 cuadrante
+//-11-11-11-11 2 cuadrante
+//-1-1-1-1-1-1-1-1 3 cuadrante
+//1-11-11-11-1 4 cuadrante
+//aprovecha la semtria de la figura para acortar el codigo
 void pintarCuadrante(int s1,int s2,int s3,int s4,int s5,int s6,int s7,int s8){
 	float a,b,c,d,e,f,g,h;
 	glLineWidth(2);
@@ -174,12 +184,12 @@ void pintarCuadrante(int s1,int s2,int s3,int s4,int s5,int s6,int s7,int s8){
 
 
 void display(void) {	
-	pintarCuadrante(1,1,1,1,1,1,1,1);
-	pintarCuadrante(-1,1,-1,1,-1,1,-1,1);
-	pintarCuadrante(-1,-1,-1,-1,-1,-1,-1,-1);
-	pintarCuadrante(1,-1,1,-1,1,-1,1,-1);
+	pintarCuadrante(1,1,1,1,1,1,1,1); //pinta el primer cuadrante
+	pintarCuadrante(-1,1,-1,1,-1,1,-1,1); //pinta el segundo cuadrante
+	pintarCuadrante(-1,-1,-1,-1,-1,-1,-1,-1); //pinta el tercer cuadrante
+	pintarCuadrante(1,-1,1,-1,1,-1,1,-1); //pinta el cuarto cuadrante
 	glColor3f(0.96, 0.84, 0.13);//amarillo
-	drawQUAD(0.0,0.06,0.06,0.0,0.0,-0.06,-0.06,0.0);
+	drawQUAD(0.0,0.06,0.06,0.0,0.0,-0.06,-0.06,0.0); //pinta el rombo del centro
 }
 
 void teclado(unsigned char key, int xmouse, int ymouse) {
